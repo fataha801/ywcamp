@@ -1,11 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young Women Camp - Lehi 41st Ward</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lehi 41st Ward Young Women — Camp Packing List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #E8A020;
+      --gold-light: #F5C76A;
+      --gold-pale: #FDF3E0;
+      --forest: #2D5016;
+      --forest-mid: #3D6B22;
+      --forest-light: #EEF4E8;
+      --cream: #FDFAF4;
+      --stone: #8C7B6B;
+      --ink: #1E1A16;
+      --border: #E2D5C3;
+      --check-green: #4A8C2A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 60%, #5A8830 100%);
+      color: white;
+      padding: 2rem 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(232,160,32,0.25);
+      border: 1px solid rgba(232,160,32,0.5);
+      color: var(--gold-light);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      position: relative;
+    }
+    header h1 span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+    header p.sub {
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .pine-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 4.5rem;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .progress-bar-bg {
+      flex: 1;
+      height: 7px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--forest-mid), var(--gold));
+      border-radius: 4px;
+      transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    .progress-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--forest);
+      white-space: nowrap;
+      min-width: 52px;
+      text-align: right;
+    }
+    .reset-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 0.4rem;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--stone);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .reset-btn:hover { border-color: var(--stone); color: var(--ink); }
+
+    /* ── ACTIONS ── */
+    .actions {
+      padding: 1rem 1.25rem 0.25rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 0.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary {
+      background: var(--forest);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(45,80,22,0.3); }
+    .btn-secondary {
+      background: var(--gold-pale);
+      color: var(--forest);
+      border: 1px solid var(--gold-light);
+    }
+    .btn-secondary:hover { background: var(--gold-light); }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      padding: 0.75rem 1.25rem 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-top: 1.5rem;
+      background: white;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1rem;
+      background: var(--forest-light);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-icon {
+      font-size: 1.1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--forest);
+      flex: 1;
+    }
+    .section-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--stone);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      padding: 0.15rem 0.5rem;
+    }
+    .section-count.complete {
+      background: var(--check-green);
+      color: white;
+      border-color: var(--check-green);
+    }
+    .chevron {
+      font-size: 0.75rem;
+      color: var(--stone);
+      transition: transform 0.25s;
+    }
+    .section.collapsed .chevron { transform: rotate(-90deg); }
+    .section.collapsed .item-list { display: none; }
+
+    /* ── ITEMS ── */
+    .item-list { padding: 0.4rem 0; }
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid rgba(226,213,195,0.4);
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+    .item:last-child { border-bottom: none; }
+    .item:hover { background: #fafaf7; }
+    .item:active { background: var(--gold-pale); }
+
+    /* custom checkbox */
+    .item input[type="checkbox"] {
+      display: none;
+    }
+    .check-box {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 1px;
+      background: white;
+    }
+    .item.checked .check-box {
+      background: var(--check-green);
+      border-color: var(--check-green);
+    }
+    .check-box svg {
+      opacity: 0;
+      transform: scale(0.4);
+      transition: all 0.2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .item.checked .check-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .item-text {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.4;
+      transition: color 0.2s, text-decoration 0.2s;
+      flex: 1;
+    }
+    .item.checked .item-text {
+      color: var(--stone);
+      text-decoration: line-through;
+    }
+    .item-note {
+      font-size: 0.72rem;
+      color: var(--stone);
+      font-weight: 300;
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      margin-top: 1.75rem;
+      background: linear-gradient(135deg, #FFF8EC, var(--gold-pale));
+      border: 1px solid var(--gold-light);
+      border-radius: 0.75rem;
+      padding: 1rem 1.1rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .footer-note .note-icon { font-size: 1.2rem; margin-top: 1px; }
+    .footer-note p {
+      font-size: 0.82rem;
+      color: var(--stone);
+      line-height: 1.55;
+    }
+    .footer-note strong { color: var(--forest); }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.7rem;
+      color: var(--stone);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    /* ── PRINT / PDF ── */
+    @media print {
+      header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .progress-wrap, .actions, .reset-btn, .chevron { display: none !important; }
+      .section { break-inside: avoid; }
+      .section.collapsed .item-list { display: block !important; }
+      body { background: white; }
+    }
+  </style>
 </head>
 <body>
-    
+
+<header>
+  <div class="header-badge">Heber Valley Camp · 2024</div>
+  <h1>Lehi 41st Ward<br><span>Young Women</span></h1>
+  <p class="sub">Sample Packing List &nbsp;·&nbsp; Be Prepared for Inclement Weather</p>
+  <div class="pine-icon">🌲</div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-label" id="progressLabel">0 / 0</div>
+  <button class="reset-btn" onclick="resetAll()">Reset</button>
+</div>
+
+<div class="actions">
+  <button class="btn btn-primary" onclick="window.print()">
+    🖨️ Export / Print PDF
+  </button>
+  <button class="btn btn-secondary" onclick="checkAll()">
+    ✅ Check All
+  </button>
+</div>
+
+<main>
+
+  <!-- CLOTHES -->
+  <div class="section" id="sec-clothes">
+    <div class="section-header" onclick="toggleSection('sec-clothes')">
+      <span class="section-icon">👕</span>
+      <span class="section-title">Clothes</span>
+      <span class="section-count" id="cnt-clothes">0 / 12</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="item-list">
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">2–4 Pairs of Long Pants<span class="item-note">Extra if coming early in summer when it's cold</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">2–4 Shorts</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">4–5 Shirts<span class="item-note">Long or short sleeved</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">4–5 Sets of Underwear</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">4–5 Pairs of Socks</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">1 Sweatshirt</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">1 Coat / Jacket</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">2 Pairs of Gloves<span class="item-note">One for warmth, one for service project</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Warm Pajamas</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Tennis Shoes or Comfortable Closed-Toe Shoes</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Hiking Boots or Shoes</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Flip Flops<span class="item-note">For showering</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Water Shoes<span class="item-note">For the lake</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GEAR -->
+  <div class="section" id="sec-gear">
+    <div class="section-header" onclick="toggleSection('sec-gear')">
+      <span class="section-icon">🎒</span>
+      <span class="section-title">Gear</span>
+      <span class="section-count" id="cnt-gear">0 / 14</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="item-list">
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Light Backpack or Fanny Pack</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Water Bottle</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Whistle to Wear Around Neck<span class="item-note">Optional</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Sunscreen</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Bug Repellant</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Sunglasses</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Hat for Sun Protection</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Rain Poncho</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Flashlight</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Personal First-Aid Kit / Medication</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Sleeping Bag</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Pillow</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Air Mattress or Sleeping Pad<span class="item-note">No thicker than 5"</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Mess Kit</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Camp Chair<span class="item-note">Optional</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONAL ITEMS -->
+  <div class="section" id="sec-personal">
+    <div class="section-header" onclick="toggleSection('sec-personal')">
+      <span class="section-icon">🪥</span>
+      <span class="section-title">Personal Items</span>
+      <span class="section-count" id="cnt-personal">0 / 8</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="item-list">
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Light Backpack or Fanny Pack</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Toiletries<span class="item-note">Deodorant, toothbrush/paste, lotion, soap, shampoo, feminine products</span></span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Hairbrush</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Towel for Showering</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Hand Towel and Wash Cloth</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Scriptures</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Pen and Pencil</span>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox"><div class="check-box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="item-text">Personal Journal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEATHER NOTE -->
+  <div class="footer-note">
+    <span class="note-icon">⛅</span>
+    <p><strong>Be Prepared for Inclement Weather.</strong> Heber Valley weather can change quickly — bring layers, a rain poncho, and extra warm clothing even if the forecast looks sunny.</p>
+  </div>
+
+</main>
+
+<footer>
+  Lehi 41st Ward Young Women &nbsp;·&nbsp; Heber Valley Camp 2024<br>
+  Based on the Church of Jesus Christ of Latter-day Saints sample packing list
+</footer>
+
+<script>
+  // State
+  const state = {};
+
+  function toggle(item) {
+    item.classList.toggle('checked');
+    updateAll();
+    saveState();
+  }
+
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  function updateSection(sectionId, countId) {
+    const section = document.getElementById(sectionId);
+    const items = section.querySelectorAll('.item');
+    const checked = section.querySelectorAll('.item.checked').length;
+    const countEl = document.getElementById(countId);
+    countEl.textContent = `${checked} / ${items.length}`;
+    countEl.classList.toggle('complete', checked === items.length);
+    return { checked, total: items.length };
+  }
+
+  function updateAll() {
+    const s1 = updateSection('sec-clothes', 'cnt-clothes');
+    const s2 = updateSection('sec-gear', 'cnt-gear');
+    const s3 = updateSection('sec-personal', 'cnt-personal');
+    const total = s1.total + s2.total + s3.total;
+    const done  = s1.checked + s2.checked + s3.checked;
+    document.getElementById('progressFill').style.width = total ? `${(done/total)*100}%` : '0%';
+    document.getElementById('progressLabel').textContent = `${done} / ${total}`;
+  }
+
+  function checkAll() {
+    document.querySelectorAll('.item').forEach(i => i.classList.add('checked'));
+    updateAll(); saveState();
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.item').forEach(i => i.classList.remove('checked'));
+    updateAll(); saveState();
+  }
+
+  // Persist to localStorage
+  function saveState() {
+    const items = document.querySelectorAll('.item');
+    const s = [];
+    items.forEach((it, i) => s.push(it.classList.contains('checked') ? 1 : 0));
+    try { localStorage.setItem('lehi41-camp', JSON.stringify(s)); } catch(e) {}
+  }
+
+  function loadState() {
+    try {
+      const s = JSON.parse(localStorage.getItem('lehi41-camp') || '[]');
+      const items = document.querySelectorAll('.item');
+      s.forEach((v, i) => { if (items[i] && v) items[i].classList.add('checked'); });
+    } catch(e) {}
+    updateAll();
+  }
+
+  loadState();
+</script>
 </body>
 </html>
