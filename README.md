@@ -1,2 +1,2 @@
-# ywcamp41
-Camp Checklist
+# Lehi 41st Ward - Young Women Camp Checklist
+Visit website
